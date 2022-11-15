@@ -5,6 +5,10 @@
     font-style: normal;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     margin: 0;
     max-width: 100vw;
@@ -12,7 +16,8 @@ body {
 
 h1,
 h2,
-h3 {
+h3,
+a {
     font-family: 'mountains_of_christmasregular';
     font-weight: normal;
 }
@@ -30,6 +35,74 @@ section {
     background-color: brown;
     overflow: hidden;
 }
+
+nav {
+    /* height: 100vh;
+    width: 100vw; */
+    background-color: burlywood;
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100vh;
+    z-index: 10;
+}
+
+nav>ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+nav li {
+    margin: auto;
+    list-style: none;
+    font-size: 2.5em;
+    transition-duration: 0.4s;
+}
+
+
+/* Unvisited links */
+
+nav>ul>li>a:link {
+    color: rgb(255, 255, 255);
+}
+
+
+/* Visited links */
+
+nav>ul>li>a:visited {
+    color: white;
+}
+
+
+/* Hovered links */
+
+nav>ul>li>a:hover {
+    color: aquamarine;
+}
+
+
+/* Active links */
+
+nav>ul>li>a:active {
+    color: red;
+}
+
+#openMenu {
+    position: fixed;
+    top: 5%;
+    right: 5%;
+    z-index: 11;
+    width: 10vw;
+    max-width: 70px;
+}
+
+
+/**/
 
 #section3 {
     background-color: rgb(255, 221, 0);
@@ -56,7 +129,7 @@ section {
     background-color: white;
     opacity: 0.7;
     top: 0;
-    z-index: 9999;
+    z-index: 4;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
@@ -243,12 +316,12 @@ section {
     grid-template-columns: 1fr 1fr;
 }
 
-#section2>img {
+#section2>.landscape {
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
-    top: 0;
+    /* top: 0; */
     opacity: 1;
 }
 
@@ -266,4 +339,19 @@ section {
     font-size: 25px;
     text-align: justify;
     line-height: 1.8;
+}
+
+#rudolphSection1 {
+    position: absolute;
+    height: 25%;
+    max-height: 150px;
+    bottom: 15%;
+    right: 25%;
+}
+
+
+/*Part 3 : Rudolph in the forest*/
+
+#section3 {
+    background-color: #a4d9e1;
 }

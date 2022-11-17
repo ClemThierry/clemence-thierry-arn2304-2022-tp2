@@ -5,7 +5,7 @@ document.querySelectorAll("nav a").forEach(function(link) {
     })
 })
 
-document.querySelector("#openMenu").addEventListener("click", openCloseMenu);
+document.querySelector("#openMenu input").addEventListener("click", openCloseMenu);
 
 function openCloseMenu() {
     document.querySelector("nav").classList.toggle("open");  

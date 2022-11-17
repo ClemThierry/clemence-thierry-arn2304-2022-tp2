@@ -8,7 +8,7 @@ document.querySelectorAll("nav a").forEach(function(link) {
 document.querySelector("#openMenu input").addEventListener("click", openCloseMenu);
 
 function openCloseMenu() {
-    document.querySelector("nav").classList.toggle("open");  
+    document.querySelector("nav").classList.toggle("open");
 }
 
 
@@ -50,20 +50,35 @@ gsap.to(".cloud", {
 
 /*Landscape*/
 
-const landscapeTimeline = gsap.timeline();
-landscapeTimeline.from("#section2>.landscape:nth-child(3)", { y: '100%' }).from(".brume", {opacity: 0, duration:2}, "+=1").from("#section2>.landscape:nth-child(2)", { y: '100%' }).from("#section2>.landscape:nth-child(5)", { y: '-100%' }).from("#storyFirstPart", { opacity: 0 }).call(textApparition("Le chat est vert."));
+const landscapeTimeline = gsap.timeline({
+    scrollTrigger: {
+        trigger: "#section2",
+        start: "top top",
+        pin: true,
+    }
+});
+
+landscapeTimeline
+    .from("#section2>.landscape:nth-child(3)", { duration: 0.5, y: '100%' })
+    .from(".brume", { opacity: 0, duration: 2 }, "+=1")
+    .from("#section2>.landscape:nth-child(2)", { duration: 1, y: '100%' })
+    .from("#section2>.landscape:nth-child(5)", { duration: 1, x: '100%' })
+    .from("#section2>.landscape:nth-child(6)", { duration: 1, y: '-100%' })
+    .from("#storyFirstPart", { opacity: 0 })
+    .call(textApparition("Le chat est vert."));
 // landscapeTimeline.call(textApparition("Le chat est bleu"), null, "<+=3");
 
 
-ScrollTrigger.create({
-    animation: landscapeTimeline,
-    trigger: "#section2",
-    start: "top top",
-    // end: "+=1000",
-    scrub: true,
-    pin: true,
-    anticipatePin: 1
-});
+// ScrollTrigger.create({
+//     animation: landscapeTimeline,
+//     trigger: "#section2",
+//     start: "top top",
+//     // end: "+=1000",
+//     //scrub: true,
+//     //onScrubComplete: ({ progress, direction, isActive }) => console.log(progress, direction, isActive),
+//     pin: true,
+//     anticipatePin: 1
+// });
 
 function textApparition(text) {
     let words = text.split(" ");
@@ -71,6 +86,27 @@ function textApparition(text) {
         console.log(word);
     });
 }
+
+gsap.set("#rudolphSection1", { scale: -1 });
+
+gsap.to("#rudolphSection1", {
+    scale: -2,
+    duration: 10,
+    repeat: 12,
+    repeatDelay: 3,
+    ease: "power1.inOut",
+    motionPath: {
+        path: "#ReindeerPath",
+        align: "#ReindeerPath",
+        autoRotate: true,
+        alignOrigin: [0.5, 0.8]
+    }
+});
+
+
+
+
+
 
 /*Part 3 : Rudolph in the forest*/
 

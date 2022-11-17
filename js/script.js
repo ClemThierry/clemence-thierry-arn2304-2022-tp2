@@ -1,21 +1,16 @@
 document.querySelectorAll("nav a").forEach(function(link) {
     link.addEventListener("click", function() {
-        document.querySelector("nav").style.display = "none";
+        //document.querySelector("nav").style.display = "none";
+        openCloseMenu();
     })
 })
 
+document.querySelector("#openMenu input").addEventListener("click", openCloseMenu);
 
-// gsap.to("#section3", {
-//     scrollTrigger: {
-//         markers: true,
-//         trigger: "#section3",
-//         start: "top center",
-//         scrub: 2,
-//         toggleActions: "restart pause reverse pause"
-//     },
-//     // duration: 1,
-//     background: 'blue'
-// });
+function openCloseMenu() {
+    document.querySelector("nav").classList.toggle("open");  
+}
+
 
 let allSnowflakes = document.querySelectorAll(".snowflake");
 let nbSnowflakes = allSnowflakes.length;
@@ -56,7 +51,7 @@ gsap.to(".cloud", {
 /*Landscape*/
 
 const landscapeTimeline = gsap.timeline();
-landscapeTimeline.from("#section2>.landscape:nth-child(2)", { y: '100%' }).from("#section2>.landscape:nth-child(1)", { y: '100%' }).from("#section2>.landscape:nth-child(3)", { y: '-100%' }).from("#storyFirstPart", { opacity: 0 }).call(textApparition("Le chat est vert."));
+landscapeTimeline.from("#section2>.landscape:nth-child(3)", { y: '100%' }).from(".brume", {opacity: 0, duration:2}, "+=1").from("#section2>.landscape:nth-child(2)", { y: '100%' }).from("#section2>.landscape:nth-child(5)", { y: '-100%' }).from("#storyFirstPart", { opacity: 0 }).call(textApparition("Le chat est vert."));
 // landscapeTimeline.call(textApparition("Le chat est bleu"), null, "<+=3");
 
 

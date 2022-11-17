@@ -21,22 +21,10 @@ let allSnowflakes = document.querySelectorAll(".snowflake");
 let nbSnowflakes = allSnowflakes.length;
 
 allSnowflakes.forEach(function(snowflake, index) {
-    // console.log("hello");
     snowflake.style.left = Math.floor(Math.random() * (document.body.offsetWidth - snowflake.style.width)) + "px";
     snowflake.style.animationDelay = (10 / nbSnowflakes) * index + "s, " + Math.round((Math.random() * 2) * 100) / 100 + "s";
 });
 
-// let random = gsap.utils.random;
-// gsap.fromTo("#section1>.snowflake",
-//     {
-//         // x: random(0, window.innerWidth),
-//         xPercent: "random(0,100)",
-//         y: -10,
-//     }, {
-//         y: window.innerHeight,
-//         duration: 10
-//     }
-// );
 
 gsap.to(".snowflake", {
     scrollTrigger: {

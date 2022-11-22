@@ -54,54 +54,87 @@ const landscapeTimeline = gsap.timeline({
     scrollTrigger: {
         trigger: "#section2",
         start: "top top",
+        end: "+=6000",
         pin: true,
+        toggleActions: "play pause resume pause",
+        markers: true,
+        onLeave: ({}) => clearInterval(winkingInterval),
+        onEnterBack: winkingNose,
+        onEnter: winkingNose
     }
 });
-
-landscapeTimeline
-    .from("#section2>.landscape:nth-child(3)", { duration: 0.5, y: '100%' })
-    .from(".brume", { opacity: 0, duration: 2 }, "+=1")
-    .from("#section2>.landscape:nth-child(2)", { duration: 1, y: '100%' })
-    .from("#section2>.landscape:nth-child(5)", { duration: 1, x: '100%' })
-    .from("#section2>.landscape:nth-child(6)", { duration: 1, y: '-100%' })
-    .from("#storyFirstPart", { opacity: 0 })
-    .call(textApparition("Le chat est vert."));
-// landscapeTimeline.call(textApparition("Le chat est bleu"), null, "<+=3");
-
-
-// ScrollTrigger.create({
-//     animation: landscapeTimeline,
-//     trigger: "#section2",
-//     start: "top top",
-//     // end: "+=1000",
-//     //scrub: true,
-//     //onScrubComplete: ({ progress, direction, isActive }) => console.log(progress, direction, isActive),
-//     pin: true,
-//     anticipatePin: 1
-// });
-
-function textApparition(text) {
-    let words = text.split(" ");
-    words.forEach(word => {
-        console.log(word);
-    });
-}
 
 gsap.set("#rudolphSection1", { scale: -1 });
 
-gsap.to("#rudolphSection1", {
-    scale: -2,
-    duration: 10,
-    repeat: 12,
-    repeatDelay: 3,
-    ease: "power1.inOut",
-    motionPath: {
-        path: "#ReindeerPath",
-        align: "#ReindeerPath",
-        autoRotate: true,
-        alignOrigin: [0.5, 0.8]
-    }
-});
+
+landscapeTimeline
+    .call(clearTextArea, ["#storyFirstPart>p"])
+    .from("#section2>.landscape:nth-child(3)", { y: '200%' })
+    .from(".brume", { opacity: 0, duration: 0.5 }, "+=1")
+    .from("#section2>.landscape:nth-child(2)", { duration: 1, y: '200%' })
+    .from("#section2>.landscape:nth-child(5)", { duration: 1, x: '200%' })
+    .from("#section2>.landscape:nth-child(6)", { duration: 1, y: '-200%' })
+    .to("#rudolphSection1", {
+        scale: -2,
+        duration: 8,
+        repeat: -1,
+        repeatDelay: 3,
+        ease: "power1.inOut",
+        motionPath: {
+            path: "#ReindeerPath",
+            align: "#ReindeerPath",
+            autoRotate: true,
+            alignOrigin: [0.5, 0.8]
+        }
+    })
+    .from("#storyFirstPart", { opacity: 0 })
+    .call(textApparition, ["Il était une fois, dans un endroit que nous connaissons tous, un petit renne nommé Rudolph. Il aimait beaucoup virvolter depuis la maison du père Noël jusqu’à la forêt enchantée. Il se distinguait des autres rennes par son nez rouge qui scintillait tel une étoile dans la nuit. Aux yeux des gens, ce nez était charmant, mais, en réalité, il complexait beaucoup notre ami.", "#storyFirstPart>p"])
+
+
+function clearTextArea(divId) {
+    document.querySelector(divId).innerHTML = "";
+}
+
+function textApparition(text, divId) {
+    let words = text.split(" ");
+    let i = 0;
+    words.forEach(word => {
+        setTimeout(function() {
+            document.querySelector(divId).innerHTML += word + " ";
+        }, i += 80);
+    });
+}
+let winkingInterval;
+
+function winkingNose() {
+    winkingInterval = setInterval(function() {
+        console.log("changement");
+        if (document.querySelector("#rudolphSection1").getAttribute("src") == "images/Reindeer/VolNez0.svg") {
+            document.querySelector("#rudolphSection1").setAttribute("src", "images/Reindeer/VolNez1.svg")
+        } else {
+            document.querySelector("#rudolphSection1").setAttribute("src", "images/Reindeer/VolNez0.svg")
+        }
+    }, 500);
+}
+
+// function clearWinkingInterval() {
+//     clearInterval(winkingInterval);
+// }
+
+
+// gsap.to("#rudolphSection1", {
+//     scale: -2,
+//     duration: 10,
+//     repeat: -1,
+//     repeatDelay: 3,
+//     ease: "power1.inOut",
+//     motionPath: {
+//         path: "#ReindeerPath",
+//         align: "#ReindeerPath",
+//         autoRotate: true,
+//         alignOrigin: [0.5, 0.8]
+//     }
+// });
 
 
 
@@ -110,15 +143,24 @@ gsap.to("#rudolphSection1", {
 
 /*Part 3 : Rudolph in the forest*/
 
+gsap.to(".atmosphere", {
+    scrollTrigger: {
+        markers: true,
+        trigger: "#section3",
+        start: "20% center",
+        end: "70% center",
+        // toggleActions: "restart pause reverse pause"
+    },
+    opacity: 0.7
+});
+
 gsap.to("#section3", {
     scrollTrigger: {
         markers: true,
         trigger: "#section3",
         start: "20% center",
-        end: "80% center",
-        scrub: 2,
-        toggleActions: "restart pause reverse pause"
+        end: "70% center",
+        // toggleActions: "restart pause reverse pause"
     },
-    // duration: 1,
-    background: '#1d4046'
+    backgroundColor: "#2d4069"
 });

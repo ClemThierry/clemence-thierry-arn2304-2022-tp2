@@ -149,7 +149,8 @@ gsap.to(".atmosphere", {
         trigger: "#section3",
         start: "20% center",
         end: "70% center",
-        // toggleActions: "restart pause reverse pause"
+        scrub: 5,
+        toggleActions: "restart pause reverse pause"
     },
     opacity: 0.7
 });
@@ -160,7 +161,8 @@ gsap.to("#section3", {
         trigger: "#section3",
         start: "20% center",
         end: "70% center",
-        // toggleActions: "restart pause reverse pause"
+        scrub: 5,
+        toggleActions: "restart pause reverse pause"
     },
     backgroundColor: "#2d4069"
 });

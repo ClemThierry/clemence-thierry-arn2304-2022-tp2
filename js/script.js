@@ -68,8 +68,6 @@ const landscapeTimeline = gsap.timeline({
 });
 
 
-
-
 landscapeTimeline
 // .call(clearTextArea, ["#storyFirstPart>p"])
     .from("#section2>.landscape:nth-child(3)", { y: '200%' })

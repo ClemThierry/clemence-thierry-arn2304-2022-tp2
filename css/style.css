@@ -98,15 +98,17 @@ nav>ul>li>a:active {
     top: 5%;
     right: 5%;
     z-index: 11;
-    width: 10vw;
     max-width: 70px;
-}
-
-#openMenu {
     display: flex;
     flex-direction: column;
     width: 70px;
     cursor: pointer;
+}
+
+@media screen and (max-width: 600px) {
+    #openMenu {
+        transform: scale(0.6);
+    }
 }
 
 #openMenu span {
@@ -152,13 +154,6 @@ input[type="checkbox"]:checked~span:nth-of-type(3) {
 .open {
     height: 100vh !important;
     z-index: 10;
-}
-
-
-/**/
-
-#section3 {
-    background-color: rgb(255, 221, 0);
 }
 
 #section1 {

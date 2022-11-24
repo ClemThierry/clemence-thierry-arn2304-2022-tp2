@@ -297,7 +297,8 @@ input[type="checkbox"]:checked~span:nth-of-type(3) {
 
 #rudolphSection1 {
     /* position: absolute; */
-    height: 8%;
+    /* height: 8vh; */
+    width: 6vw;
     /* max-height: 150px;
     bottom: 15%;
     right: 25%; */
@@ -319,6 +320,7 @@ input[type="checkbox"]:checked~span:nth-of-type(3) {
     background-repeat: no-repeat;
     background-position: bottom right;
     position: relative;
+    display: flex;
 }
 
 .persoAssis {
@@ -332,15 +334,16 @@ input[type="checkbox"]:checked~span:nth-of-type(3) {
 }
 
 .persoAssis>p {
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.6);
     padding: 30px;
     /* border-radius: 100%; */
     border-radius: 50px 50px 50px 0;
     /* min-height: 20vh; */
-    width: 40%;
+    max-width: 70%;
     text-align: center;
-    margin-left: 45%;
-    margin-bottom: -15%;
+    position: absolute;
+    right: -70%;
+    z-index: 3;
 }
 
 .atmosphere {
@@ -351,5 +354,5 @@ input[type="checkbox"]:checked~span:nth-of-type(3) {
     right: 0px;
     bottom: 0px;
     opacity: 0;
-    z-index: 9;
+    z-index: 2;
 }

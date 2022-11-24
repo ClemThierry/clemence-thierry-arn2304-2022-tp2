@@ -57,7 +57,7 @@ const landscapeTimeline = gsap.timeline({
         start: "top top",
         end: "+=6000",
         pin: true,
-        scrub: 3,
+        scrub: 2,
         toggleActions: "play pause resume pause",
         markers: true,
         onLeave: ({}) => clearInterval(winkingInterval),
@@ -70,11 +70,11 @@ const landscapeTimeline = gsap.timeline({
 
 landscapeTimeline
 // .call(clearTextArea, ["#storyFirstPart>p"])
-    .from("#section2>.landscape:nth-child(3)", { y: '200%' })
+    .from("#section2>.landscape:nth-child(3)", { y: '100vh' })
     .from(".brume", { opacity: 0, /*duration: 0.5*/ }, "+=1")
-    .from("#section2>.landscape:nth-child(2)", { /*duration: 1,*/ y: '200%' })
-    .from("#section2>.landscape:nth-child(5)", { /*duration: 1,*/ x: '200%' })
-    .from("#section2>.landscape:nth-child(6)", { /*duration: 1,*/ y: '-200%' })
+    .from("#section2>.landscape:nth-child(2)", { /*duration: 1,*/ y: '100vw' })
+    .from("#section2>.landscape:nth-child(5)", { /*duration: 1,*/ x: '100vw' })
+    .from("#section2>.landscape:nth-child(6)", { /*duration: 1,*/ y: '-100vh' })
     .from("#storyFirstPart", { opacity: 0 })
     .call(textApparition, ["Il était une fois, dans un endroit que nous connaissons tous, un petit renne nommé Rudolph. Il aimait beaucoup virvolter depuis la maison du père Noël jusqu’à la forêt enchantée. Il se distinguait des autres rennes par son nez rouge qui scintillait tel une étoile dans la nuit. Aux yeux des gens, ce nez était charmant, mais, en réalité, il complexait beaucoup notre ami.", "#storyFirstPart>p"], "<")
 
@@ -159,7 +159,7 @@ gsap.to(".atmosphere", {
         trigger: "#section3",
         start: "20% center",
         end: "70% center",
-        scrub: 5,
+        scrub: 2,
         toggleActions: "restart pause reverse pause"
     },
     opacity: 0.7
@@ -171,7 +171,7 @@ gsap.to("#section3", {
         trigger: "#section3",
         start: "20% center",
         end: "70% center",
-        scrub: 5,
+        scrub: 2,
         toggleActions: "restart pause reverse pause"
     },
     backgroundColor: "#2d4069"

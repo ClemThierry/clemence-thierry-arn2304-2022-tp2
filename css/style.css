@@ -105,12 +105,6 @@ nav>ul>li>a:active {
     cursor: pointer;
 }
 
-@media screen and (max-width: 600px) {
-    #openMenu {
-        transform: scale(0.6);
-    }
-}
-
 #openMenu span {
     background: #fff;
     border-radius: 10px;
@@ -350,4 +344,24 @@ input[type="checkbox"]:checked~span:nth-of-type(3) {
     bottom: 0px;
     opacity: 0;
     z-index: 2;
+}
+
+
+/*Responsive*/
+
+@media screen and (max-width: 600px) {
+    #openMenu {
+        transform: scale(0.6);
+    }
+    #storyFirstPart {
+        grid-column: 1 / span 3;
+    }
+    .storyPara>p {
+        font-size: 17px;
+    }
+    .persoAssis {
+        transform: scale(0.8);
+        left: 8%;
+        bottom: 5%;
+    }
 }

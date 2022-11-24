@@ -153,26 +153,58 @@ function winkingNose() {
 
 /*Part 3 : Rudolph in the forest*/
 
-gsap.to(".atmosphere", {
+let flyingRudolph = gsap.timeline({
+    yoyo: true,
+    repeat: -1
+}).to("#rudolphSection3", { y: '-8%' });
+
+const forestTimeline = gsap.timeline({
     scrollTrigger: {
-        markers: true,
         trigger: "#section3",
-        start: "20% center",
-        end: "70% center",
+        start: "top top",
+        end: "+=6000",
+        pin: true,
         scrub: 2,
-        toggleActions: "restart pause reverse pause"
-    },
-    opacity: 0.7
+        // toggleActions: "play pause resume pause",
+        markers: true,
+    }
 });
 
-gsap.to("#section3", {
+
+forestTimeline
+    .from("#section3>#backgroundSection3", { x: '-100vw' })
+    // flyingRudolph.play()
+    // nuit qui tombe
+    .to(".atmosphere", { opacity: 0.7 }, "<")
+    .to("#section3", { backgroundColor: "#2d4069" }, "<")
+    //renne vole
+    // .call(() => { flyingRudolph.kill(); }, ">1")
+    //renne assis
+    .call(function() {
+        document.querySelector("#rudolphSection3").setAttribute("src", "images/Reindeer/AssisNez0.svg");
+        setTimeout(() => {
+            flyingRudolph.kill()
+        }, 100);
+    })
+    // texte
+    .from("#section3 .storyPara", { opacity: 0 })
+    .call(textApparition, ["Un jour, il s’aventura plus loin qu’à son habitude dans la forêt. Peu à peu, la nuit commença à tomber. Rudolph, perdu et effrayé, se mit à penser : ", "#section3 .storyPara>p"], "<")
+    // dialogue
+    .from(".persoAssis>p", { opacity: 0 })
+    .call(textApparition, ["Quelle idée ai-je eu de partir si loin, jamais plus je ne reverrais les miens.", ".persoAssis>p"], "<")
+    .from(".transitionForest", { opacity: 0 })
+
+/*Section 4*/
+
+gsap.to(".transitionForest", {
     scrollTrigger: {
         markers: true,
-        trigger: "#section3",
-        start: "20% center",
-        end: "70% center",
-        scrub: 2,
+        trigger: "#section4",
+        start: "center center",
+        end: "+=500",
+        pin: true,
+        scrub: 5,
         toggleActions: "restart pause reverse pause"
     },
-    backgroundColor: "#2d4069"
-});
+    opacity: 0
+})

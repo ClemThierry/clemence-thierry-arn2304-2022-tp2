@@ -208,3 +208,59 @@ gsap.to(".transitionForest", {
     },
     opacity: 0
 })
+
+
+
+const santaTimeline = gsap.timeline({
+    scrollTrigger: {
+        trigger: "#section4",
+        start: "top top",
+        end: "+=3000",
+        pin: true,
+        scrub: 2,
+        // toggleActions: "play pause resume pause",
+        markers: true,
+    }
+});
+
+santaTimeline
+// .to(".transitionForest", {
+//     opacity: 0
+// })
+    .from("#santa", {
+        // scrollTrigger: {
+        //     markers: true,
+        //     trigger: "#section4",
+        //     start: "center center",
+        //     end: "+=500",
+        //     pin: true,
+        //     scrub: 5,
+        //     toggleActions: "restart pause reverse pause"
+        // },
+        x: 500,
+        y: 500,
+    })
+    .from("#section4 .storyPara", { opacity: 0 })
+    .call(textApparition, ["Le père Noël, inquiet de ne pas voir son renne préféré rentrer, décida de partir à sa recherche. Il s'enfonça dans la forêt. Sans relâche il criait le nom de notre ami. Plus il avançait et moins il y voyait. Si bien qu’au bout d’un moment l’obscurité l’avait emporté. Rudolph entendit son nom au loin. L’espoir qui le gagna était si fort qu’il fit scintiller son nez. Cette lueur perça l’obscurité ce qui permit au Père Noël de le retrouver.", "#section4 .storyPara>p"], "<")
+    .from(".santaDialog", { scale: 0 })
+    .to(".santaDialog", { scale: 0 })
+    .to(".santaDialog", { x: -80, y: -20 })
+    .call(function() {
+        setInterval(() => {
+            document.querySelector(".nose>span").classList.toggle("noseOn");
+        }, 500);
+    })
+    .to(".santaDialog", { scale: 2 })
+    .to("#santa", { xPercent: -100 })
+
+
+
+
+function showCoords(event) {
+    var x = event.clientX;
+    var y = event.clientY;
+    // var coords = "X coords: " + x + " en % :" + (x / document.querySelector("#section4").clientWidth) * 100 + ", Y coords: " + (y / document.querySelector("#section4").clientHeight) * 100;
+    // console.log(coords);
+    document.querySelector("#backgroundSection4").style.clipPath = "circle(10% at " + (x / document.querySelector("#section4").clientWidth) * 100 + "% " + (y / document.querySelector("#section4").clientHeight) * 100 + "%)"
+
+}

@@ -390,8 +390,8 @@ input[type="checkbox"]:checked~span:nth-of-type(3) {
     background-size: auto 100%;
     background-repeat: no-repeat;
     background-position: bottom right;
-    /* clip-path: circle(33.8% at 69% 38%); */
-    z-index: -1;
+    clip-path: circle(10% at 20% 80%);
+    z-index: 0;
 }
 
 #santa {
@@ -420,7 +420,6 @@ input[type="checkbox"]:checked~span:nth-of-type(3) {
     position: absolute;
     left: 20%;
     bottom: 40%;
-    z-index: 1000;
 }
 
 .nose>span {
@@ -434,6 +433,7 @@ input[type="checkbox"]:checked~span:nth-of-type(3) {
     -moz-border-radius: 100%;
     border-radius: 100%;
     transition: box-shadow .4s ease;
+    opacity: 0;
 }
 
 .noseOn {
@@ -441,6 +441,8 @@ input[type="checkbox"]:checked~span:nth-of-type(3) {
     -webkit-box-shadow: 0 0 30px #d81b1f;
     -moz-box-shadow: 0 0 30px #d81b1f;
     box-shadow: 0 0 30px #d81b1f;
+    z-index: 90;
+    opacity: 1 !important;
 }
 
 

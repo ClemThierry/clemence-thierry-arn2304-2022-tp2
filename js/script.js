@@ -215,13 +215,15 @@ const santaTimeline = gsap.timeline({
     scrollTrigger: {
         trigger: "#section4",
         start: "top top",
-        end: "+=3000",
-        pin: true,
-        scrub: 2,
+        end: "center center",
+        // pin: true,
+        scrub: 10,
         // toggleActions: "play pause resume pause",
         markers: true,
     }
 });
+
+let noseSection4;
 
 santaTimeline
 // .to(".transitionForest", {
@@ -246,21 +248,19 @@ santaTimeline
     .to(".santaDialog", { scale: 0 })
     .to(".santaDialog", { x: -80, y: -20 })
     .call(function() {
-        setInterval(() => {
+        noseSection4 = setInterval(() => {
             document.querySelector(".nose>span").classList.toggle("noseOn");
-        }, 500);
+        }, 600);
     })
     .to(".santaDialog", { scale: 2 })
+    .to(".santaDialog", { scale: 0 })
     .to("#santa", { xPercent: -100 })
 
 
-
-
-function showCoords(event) {
-    var x = event.clientX;
-    var y = event.clientY;
+document.querySelector("#section4").addEventListener("mouseover", (e) => {
+    let x = e.clientX;
+    let y = e.clientY;
     // var coords = "X coords: " + x + " en % :" + (x / document.querySelector("#section4").clientWidth) * 100 + ", Y coords: " + (y / document.querySelector("#section4").clientHeight) * 100;
     // console.log(coords);
-    document.querySelector("#backgroundSection4").style.clipPath = "circle(10% at " + (x / document.querySelector("#section4").clientWidth) * 100 + "% " + (y / document.querySelector("#section4").clientHeight) * 100 + "%)"
-
-}
+    document.querySelector("#backgroundSection4").style.clipPath = "circle(10% at " + (x / document.querySelector("#section4").clientWidth) * 100 + "% " + (y / document.querySelector("#section4").clientHeight) * 100 + "%)";
+})

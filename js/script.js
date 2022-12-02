@@ -264,3 +264,50 @@ document.querySelector("#section4").addEventListener("mouseover", (e) => {
     // console.log(coords);
     document.querySelector("#backgroundSection4").style.clipPath = "circle(10% at " + (x / document.querySelector("#section4").clientWidth) * 100 + "% " + (y / document.querySelector("#section4").clientHeight) * 100 + "%)";
 })
+
+/*Section 5*/
+
+//Timeline
+const endTimeline = gsap.timeline({
+    scrollTrigger: {
+        trigger: "#section5",
+        start: "top top",
+        end: "center center",
+        scrub: 10,
+        // toggleActions: "play pause resume pause",
+        markers: true,
+    }
+});
+
+/*Animation du feu
+Ouverture rideau
+Apparition du texte
+Mouvement de la tête de Rudolph
+Fermeture des rideaux
+"Fin"
+*/
+const fireTimeline = gsap.timeline()
+    .from(".bigFire", { transformOrigin: "bottom center", scale: 0.9, duration: .6, repeatDelay: .4, repeat: -1, yoyo: true })
+    .from(".littleFire", { transformOrigin: "bottom center", scale: 0.9, duration: .5, repeatDelay: .4, repeat: -1, yoyo: true }, "<");
+
+fireTimeline.pause();
+
+endTimeline
+    .from(".brick", 1, {
+        y: -300,
+        transformOrigin: "center",
+        ease: "power1.inOut",
+        delay: 0.2,
+        stagger: {
+            amount: 1.5,
+            grid: "auto",
+            from: "random"
+        }
+    })
+    .from(".cheminee", { yPercent: -200, ease: "power1.inOut" })
+    .from(".fire", { transformOrigin: "bottom center", opacity: 0, scale: 0, yoyo: false, repeat: 0 })
+    .call(() => {
+        fireTimeline.play()
+    }, ">")
+    .from("#section5 .storyPara", { opacity: 0 })
+    .call(textApparition, ["De retour chez eux, petit renne et le Père Noël se réchauffèrent au coin du feu. C’est alors que Rodolph se dit qu’il n’avait jamais était aussi heureux d’avoir un nez lumineux.", "#section5 .storyPara>p"], "<")

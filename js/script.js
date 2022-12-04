@@ -286,11 +286,11 @@ Mouvement de la tête de Rudolph
 Fermeture des rideaux
 "Fin"
 */
-const fireTimeline = gsap.timeline()
-    .from(".bigFire", { transformOrigin: "bottom center", scale: 0.9, duration: .6, repeatDelay: .4, repeat: -1, yoyo: true })
-    .from(".littleFire", { transformOrigin: "bottom center", scale: 0.9, duration: .5, repeatDelay: .4, repeat: -1, yoyo: true }, "<");
+// const fireTimeline = gsap.timeline()
+gsap.from(".bigFire", { transformOrigin: "bottom center", scale: 0.9, duration: .6, repeatDelay: .4, repeat: -1, yoyo: true });
+gsap.from(".littleFire", { transformOrigin: "bottom center", scale: 0.9, duration: .5, repeatDelay: .4, repeat: -1, yoyo: true }, "<");
 
-fireTimeline.pause();
+// fireTimeline.pause();
 
 endTimeline
     .from(".brick", 1, {
@@ -305,9 +305,17 @@ endTimeline
         }
     })
     .from(".cheminee", { yPercent: -200, ease: "power1.inOut" })
-    .from(".fire", { transformOrigin: "bottom center", opacity: 0, scale: 0, yoyo: false, repeat: 0 })
-    .call(() => {
-        fireTimeline.play()
-    }, ">")
+    .from(".fire", { transformOrigin: "bottom center", opacity: 0, scale: 0 })
+    .to(".fire", { opacity: 0, duration: .2 })
+    .to(".bigFire", { opacity: 1 }, "<")
+    .to(".littleFire", { opacity: 1 }, "<")
+    // .call(() => {
+    //     // document.querySelector(".fire").style.display = "none";
+    //     // document.querySelector(".bigFire").style.opacity = 1;
+    //     // document.querySelector(".littleFire").style.opacity = 1;
+    //     fireTimeline.play()
+    // }, ">")
+    .from(".santaSection5", { xPercent: 200 })
+    .from(".reindeerSection5", { xPercent: -200 })
     .from("#section5 .storyPara", { opacity: 0 })
-    .call(textApparition, ["De retour chez eux, petit renne et le Père Noël se réchauffèrent au coin du feu. C’est alors que Rodolph se dit qu’il n’avait jamais était aussi heureux d’avoir un nez lumineux.", "#section5 .storyPara>p"], "<")
+    .call(textApparition, ["De retour chez eux, petit renne et le Père Noël se réchauffèrent au coin du feu. C’est alors que Rodolph se dit qu’il n’avait jamais était aussi heureux d’avoir un nez lumineux. <br><br> <p>FIN</p>", "#section5 .storyPara>p"], "<")

@@ -450,6 +450,7 @@ input[type="checkbox"]:checked~span:nth-of-type(3) {
     grid-template-columns: 3fr 2fr;
     padding-left: 30px;
     padding-right: 30px;
+    background-color: #cfbebd;
 }
 
 #section5>#endImageContainer {
@@ -473,10 +474,20 @@ input[type="checkbox"]:checked~span:nth-of-type(3) {
     fill: #87201e;
 }
 
+.fire {}
 
-/* .fire {
-    opacity: 1;
-} */
+.bigFire {
+    opacity: 0;
+}
+
+.littleFire {
+    opacity: 0;
+}
+
+.storyPara>p>p {
+    text-align: center;
+    font-family: 'mountains_of_christmasregular';
+}
 
 
 /*Responsive*/

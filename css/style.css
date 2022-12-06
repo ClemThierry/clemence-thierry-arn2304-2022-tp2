@@ -356,12 +356,38 @@ input[type="checkbox"]:checked~span:nth-of-type(3) {
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: url("../images/section3Back.svg");
+    /* background-image: url("../images/section3Back.svg");
     background-size: auto 100%;
     background-repeat: no-repeat;
-    background-position: bottom right;
+    background-position: bottom right; */
     clip-path: circle(10% at 20% 80%);
     z-index: 0;
+}
+
+#backgroundSection4>.background {
+    height: 100%;
+    position: absolute;
+    left: 0;
+}
+
+#backgroundSection4>.forestReindeer {
+    max-height: 40vh;
+    position: absolute;
+    left: 10%;
+    bottom: 12%;
+}
+
+.nosePart4 {
+    max-height: 40vh;
+    position: absolute;
+    left: 10%;
+    bottom: 12%;
+    opacity: 0;
+}
+
+.noseOn {
+    z-index: 90;
+    opacity: 1 !important;
 }
 
 #santa {
@@ -373,7 +399,6 @@ input[type="checkbox"]:checked~span:nth-of-type(3) {
 }
 
 .santaDialog {
-    /* height: fit-content; */
     z-index: 3;
     width: fit-content;
     padding: 2%;
@@ -384,35 +409,6 @@ input[type="checkbox"]:checked~span:nth-of-type(3) {
     top: 50%;
     clip-path: polygon(51% 0, 30% 20%, 0 16%, 7% 45%, 0 87%, 25% 85%, 46% 100%, 65% 86%, 100% 86%, 82% 54%, 100% 20%, 62% 19%);
     transform: scale(2);
-}
-
-.nose {
-    position: absolute;
-    left: 20%;
-    bottom: 40%;
-}
-
-.nose>span {
-    display: inline-block;
-    background: #d81b1f;
-    width: 60px;
-    height: 40px;
-    text-align: center;
-    vertical-align: middle;
-    -webkit-border-radius: 100%;
-    -moz-border-radius: 100%;
-    border-radius: 100%;
-    transition: box-shadow .4s ease;
-    opacity: 0;
-}
-
-.noseOn {
-    background: #ff2a1f;
-    -webkit-box-shadow: 0 0 30px #d81b1f;
-    -moz-box-shadow: 0 0 30px #d81b1f;
-    box-shadow: 0 0 30px #d81b1f;
-    z-index: 90;
-    opacity: 1 !important;
 }
 
 #section5 {

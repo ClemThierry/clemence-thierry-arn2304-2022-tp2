@@ -173,17 +173,18 @@ const santaTimeline = gsap.timeline({
         start: "top top",
         end: "bottom center",
         scrub: 10,
+        pin: true,
         toggleActions: "play pause resume pause",
-
         onLeave: ({}) => clearInterval(noseSection4),
-        onEnterBack: winkingNose,
-        onEnter: winkingNose,
+        onEnterBack: winkingNosePart4,
+        onEnter: winkingNosePart4,
+        markers: true
     }
 });
 
 function winkingNosePart4() {
     noseSection4 = setInterval(() => {
-        document.querySelector(".nose>span").classList.toggle("noseOn");
+        document.querySelector(".nosePart4").classList.toggle("noseOn");
     }, 800);
 }
 

@@ -1,6 +1,8 @@
 gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
 
+/*****************/
 /*Global function*/
+/*****************/
 
 function textApparition(text, divId) {
     let words = text.split(" ");
@@ -35,7 +37,9 @@ function openCloseMenu() {
     document.querySelector("nav").classList.toggle("open");
 }
 
+/***********/
 /*Section 1*/
+/***********/
 
 /*Snowflakes*/
 
@@ -72,7 +76,9 @@ gsap.to(".cloud", {
     xPercent: 200
 });
 
+/***********/
 /*Section 2*/
+/***********/
 
 let winkingInterval;
 const landscapeTimeline = gsap.timeline({
@@ -130,7 +136,9 @@ function winkingNose() {
     }, 500);
 }
 
+/***********************************/
 /*Section 3 : Rudolph in the forest*/
+/***********************************/
 
 let flyingRudolph = gsap.timeline({
     paused: true,
@@ -165,7 +173,9 @@ forestTimeline
     .call(textApparition, ["Quelle idée ai-je eu de partir si loin, jamais plus je ne reverrais les miens.", ".persoAssis>p"], "<")
     .from(".transitionForest", { opacity: 0 })
 
+/***********/
 /*Section 4*/
+/***********/
 
 let noseSection4;
 const santaTimeline = gsap.timeline({
@@ -210,7 +220,9 @@ document.querySelector("#section4").addEventListener("mouseover", (e) => {
     document.querySelector("#backgroundSection4").style.clipPath = "circle(10% at " + (x / document.querySelector("#section4").clientWidth) * 100 + "% " + (y / document.querySelector("#section4").clientHeight) * 100 + "%)";
 })
 
+/***********/
 /*Section 5*/
+/***********/
 
 const endTimeline = gsap.timeline({
     scrollTrigger: {
@@ -248,7 +260,9 @@ endTimeline
     .from("#section5 .storyPara", { opacity: 0 })
     .call(textApparition, ["De retour chez eux, petit renne et le Père Noël se réchauffèrent au coin du feu. C’est alors que Rodolph se dit qu’il n’avait jamais était aussi heureux d’avoir un nez lumineux. <br><br> <p>FIN</p>", "#section5 .storyPara>p"], "<")
 
+/*******/
 /*Music*/
+/*******/
 
 let music = document.querySelector("#music");
 music.loop = true;

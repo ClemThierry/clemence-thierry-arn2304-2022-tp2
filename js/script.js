@@ -13,6 +13,10 @@ function textApparition(text, divId) {
     });
 }
 
+function clearTextArea(divId) {
+    document.querySelector(divId).innerHTML = "";
+}
+
 /*Menu*/
 
 document.querySelectorAll("nav a").forEach(function(link) {
@@ -70,6 +74,7 @@ gsap.to(".cloud", {
 
 /*Section 2*/
 
+let winkingInterval;
 const landscapeTimeline = gsap.timeline({
     scrollTrigger: {
         trigger: "#section2",
@@ -78,7 +83,6 @@ const landscapeTimeline = gsap.timeline({
         pin: true,
         scrub: 2,
         toggleActions: "play pause resume pause",
-
         onLeave: ({}) => clearInterval(winkingInterval),
         onEnterBack: winkingNose,
         onEnter: winkingNose,
@@ -94,11 +98,6 @@ landscapeTimeline
     .from("#section2>.landscape:nth-child(6)", { y: '-100vh' })
     .from("#storyFirstPart", { opacity: 0 })
     .call(textApparition, ["Il était une fois, dans un endroit que nous connaissons tous, un petit renne nommé Rudolph. Il aimait beaucoup virvolter depuis la maison du père Noël jusqu’à la forêt enchantée. Il se distinguait des autres rennes par son nez rouge qui scintillait tel une étoile dans la nuit. Aux yeux des gens, ce nez était charmant, mais, en réalité, il complexait beaucoup notre ami.", "#storyFirstPart>p"], "<")
-
-
-function clearTextArea(divId) {
-    document.querySelector(divId).innerHTML = "";
-}
 
 gsap.set("#rudolphSection1", { scale: -1 });
 gsap.to("#rudolphSection1", {
@@ -120,8 +119,6 @@ gsap.to("#rudolphSection1", {
         alignOrigin: [0.5, 0.8]
     }
 })
-
-let winkingInterval;
 
 function winkingNose() {
     winkingInterval = setInterval(function() {
@@ -169,19 +166,7 @@ forestTimeline
 
 /*Section 4*/
 
-gsap.to(".transitionForest", {
-    scrollTrigger: {
-
-        trigger: "#section4",
-        start: "center center",
-        end: "+=500",
-        pin: true,
-        scrub: 5,
-        toggleActions: "restart pause reverse pause"
-    },
-    opacity: 0
-})
-
+let noseSection4;
 const santaTimeline = gsap.timeline({
     scrollTrigger: {
         trigger: "#section4",
@@ -195,8 +180,6 @@ const santaTimeline = gsap.timeline({
         onEnter: winkingNose,
     }
 });
-
-let noseSection4;
 
 function winkingNosePart4() {
     noseSection4 = setInterval(() => {
@@ -253,7 +236,7 @@ endTimeline
             from: "random"
         }
     })
-    .from(".cheminee", { yPercent: -200, ease: "power1.inOut" })
+    .from(".fireplace", { yPercent: -200, ease: "power1.inOut" })
     .from(".fire", { transformOrigin: "bottom center", opacity: 0, scale: 0 })
     .to(".fire", { opacity: 0, duration: .2 })
     .to(".bigFire", { opacity: 1 }, "<")

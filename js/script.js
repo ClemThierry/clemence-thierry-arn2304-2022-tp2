@@ -92,7 +92,7 @@ const landscapeTimeline = gsap.timeline({
 
 landscapeTimeline
     .from("#section2>.landscape:nth-child(3)", { y: '100vh' })
-    .from(".brume", { opacity: 0 }, "+=1")
+    .from(".brume", { opacity: 0 })
     .from("#section2>.landscape:nth-child(2)", { y: '100vw' })
     .from("#section2>.landscape:nth-child(5)", { x: '100vw' })
     .from("#section2>.landscape:nth-child(6)", { y: '-100vh' })
@@ -133,9 +133,10 @@ function winkingNose() {
 /*Section 3 : Rudolph in the forest*/
 
 let flyingRudolph = gsap.timeline({
+    paused: true,
     yoyo: true,
     repeat: -1
-}).to("#rudolphSection3", { y: '-8%' });
+}).to("#flyingRudolphSection3", { y: '-8%' });
 
 const forestTimeline = gsap.timeline({
     scrollTrigger: {
@@ -149,15 +150,15 @@ const forestTimeline = gsap.timeline({
 });
 
 forestTimeline
+    .addLabel("playFlying")
+    .add(function() { flyingRudolph.play() }, 'playFlying')
     .from("#section3>#backgroundSection3", { x: '-100vw' })
     .to(".atmosphere", { opacity: 0.7 }, "<")
     .to("#section3", { backgroundColor: "#2d4069" }, "<")
-    .call(function() {
-        document.querySelector("#rudolphSection3").setAttribute("src", "images/Reindeer/AssisNez0.svg");
-        setTimeout(() => {
-            flyingRudolph.kill()
-        }, 100);
-    })
+    .addLabel("pausedFlying")
+    .add(function() { flyingRudolph.pause() }, 'pausedFlying')
+    .to("#flyingRudolphSection3", { opacity: 0 }, "<")
+    .from("#sittingRudolphSection3", { opacity: 0 }, "<")
     .from("#section3 .storyPara", { opacity: 0 })
     .call(textApparition, ["Un jour, il s’aventura plus loin qu’à son habitude dans la forêt. Peu à peu, la nuit commença à tomber. Rudolph, perdu et effrayé, se mit à penser : ", "#section3 .storyPara>p"], "<")
     .from(".persoAssis>p", { opacity: 0 })

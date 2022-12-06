@@ -62,14 +62,14 @@ nav li {
     margin: auto;
     list-style: none;
     font-size: 2.5em;
-    transition-duration: 0.4s;
+    /* transition-duration: 0.4s; */
 }
 
 
 /* Unvisited links */
 
 nav>ul>li>a:link {
-    color: rgb(35, 142, 188);
+    color: white;
 }
 
 
@@ -83,14 +83,7 @@ nav>ul>li>a:visited {
 /* Hovered links */
 
 nav>ul>li>a:hover {
-    color: aquamarine;
-}
-
-
-/* Active links */
-
-nav>ul>li>a:active {
-    color: red;
+    color: rgb(255, 249, 201);
 }
 
 #openMenu {
@@ -285,12 +278,11 @@ input[type="checkbox"]:checked~span:nth-of-type(3) {
 }
 
 #rudolphSection1 {
-    /* position: absolute; */
-    /* height: 8vh; */
+    position: absolute;
+    top: 50vh;
+    left: 0;
+    right: 0;
     width: 6vw;
-    /* max-height: 150px;
-    bottom: 15%;
-    right: 25%; */
 }
 
 
@@ -396,7 +388,7 @@ input[type="checkbox"]:checked~span:nth-of-type(3) {
 
 #santa {
     position: absolute;
-    right: 0;
+    right: -20%;
     bottom: -20vh;
     max-height: 80vh;
     transform: scaleX(-1);
@@ -493,11 +485,24 @@ input[type="checkbox"]:checked~span:nth-of-type(3) {
 /*Responsive*/
 
 @media screen and (max-width: 600px) {
+    h1 {
+        font-size: 2em;
+    }
+    h2 {
+        font-size: 1.2em;
+    }
     #openMenu {
         transform: scale(0.6);
     }
+    nav li {
+        font-size: 1.8em;
+    }
     #storyFirstPart {
         grid-column: 1 / span 3;
+    }
+    .storyPara {
+        padding: 30px;
+        margin-top: 50px;
     }
     .storyPara>p {
         font-size: 17px;
@@ -507,7 +512,15 @@ input[type="checkbox"]:checked~span:nth-of-type(3) {
         left: 8%;
         bottom: 5%;
     }
+    #backgroundSection4 {
+        background-size: auto 80%;
+        z-index: -1;
+    }
     #section5 {
         grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+    }
+    #section5>.storyPara {
+        align-self: stretch;
     }
 }

@@ -247,3 +247,28 @@ endTimeline
     .from(".reindeerSection5", { xPercent: -200 })
     .from("#section5 .storyPara", { opacity: 0 })
     .call(textApparition, ["De retour chez eux, petit renne et le Père Noël se réchauffèrent au coin du feu. C’est alors que Rodolph se dit qu’il n’avait jamais était aussi heureux d’avoir un nez lumineux. <br><br> <p>FIN</p>", "#section5 .storyPara>p"], "<")
+
+/*Music*/
+
+let music = document.querySelector("#music");
+music.loop = true;
+
+document.querySelector("#musicIcon").addEventListener("click", () => {
+    if (music.paused) {
+        playMusic();
+        gsap.to("#musicIcon>div", { scale: 0 })
+    } else {
+        pauseMusic();
+        gsap.to("#musicIcon>div", { scale: 1 })
+    }
+})
+
+//Play
+function playMusic() {
+    music.play();
+}
+
+//Pause
+function pauseMusic() {
+    music.pause();
+}
